@@ -105,7 +105,7 @@ function onLaunch(launchRequest, session, callback) {
  */
 function onIntent(intentRequest, session, callback) {
     console.log(`onIntent requestId=${intentRequest.requestId}, sessionId=${session.sessionId}`);
-
+    console.log('Hello world -- example');
     const intent = intentRequest.intent;
     const intentName = intentRequest.intent.name;
 

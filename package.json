@@ -1,0 +1,23 @@
+{
+  "name": "alexa-skill-1",
+  "version": "1.0.0",
+  "description": "Hello World Alexa",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakesh031986jha/alexawithoutalexa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rakesh031986jha/alexawithoutalexa/issues"
+  },
+  "homepage": "https://github.com/rakesh031986jha/alexawithoutalexa#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}

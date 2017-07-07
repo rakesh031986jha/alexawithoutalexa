@@ -60,7 +60,7 @@ restService.post('/pizza', function(req, res) {
     }
     else if (req.body.request.type === 'IntentRequest'){
       let intentType= req.body.request.type;
-    //  console.log(event);
+      console.log(intentType);
     var result= onIntent(intentType);
     }
 

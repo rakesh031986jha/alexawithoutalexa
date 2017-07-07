@@ -93,8 +93,6 @@ function onLaunch(launchRequest, session, callback) {
 }
 
 function onIntent(intentRequest, session, callback) {
-    console.log(`onIntent requestId=${intentRequest.requestId}, sessionId=${session.sessionId}`);
-    console.log('Hello pizz -- example');
     const intent = intentRequest.intent;
     const intentName = intentRequest.intent.name;
 
@@ -115,7 +113,7 @@ function onIntent(intentRequest, session, callback) {
  * Is not called when the skill returns shouldEndSession=true.
  */
 function onSessionEnded(sessionEndedRequest, session) {
-    console.log(`onSessionEnded requestId=${sessionEndedRequest.requestId}, sessionId=${session.sessionId}`);
+
     // Add cleanup logic here
 }
 
@@ -125,10 +123,10 @@ restService.post('/pizza', function (req, res) {
         res.json(response);
         return true;
     }
-    console.log(callback);
+
 
     let event = req.body;
-    console.log(event);
+
 
     if (event.session.new) {
         onSessionStarted({ requestId: event.request.requestId }, event.session);

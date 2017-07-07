@@ -53,10 +53,10 @@ app.post('/pizza', function(req, res) {
       getWelcomeResponse();
     }
     else if (req.body.request.type === 'IntentRequest'){
-     onIntent(event.request.type);
+    var result= onIntent(event.request.type);
     }
 
 
 
-    res.send(user_id + ' ' + token + ' ' + geo);
+    res.send(result);
 });

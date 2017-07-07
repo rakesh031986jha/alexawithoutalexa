@@ -34,15 +34,18 @@ function onIntent(intentRequest) {
     const intent = intentRequest.intent;
     //const intentName = intentRequest.intent.name;
     // Dispatch to your skill's intent handlers
-    if (intentName === 'PizzIntent') {
+    if (intent =!null) {
+        console.log('PizzIntent');
         getPizza(intent);
-    } else if (intentName === 'AMAZON.HelpIntent') {
+    }
+/*
+    else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse();
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest();
     } else {
         throw new Error('Invalid intent');
-    }
+    }*/
 }
 
 

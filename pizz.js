@@ -33,7 +33,7 @@ function getPizza(intent){
 function onIntent(intentRequest) {
     console.log('Pizza world -- example');
     const intent = intentRequest.intent;
-    console.log(intentRequest.inten);
+    console.log(intentRequest.intent);
     //const intentName = intentRequest.intent.name;
     // Dispatch to your skill's intent handlers
     //if (intent =!null) {

@@ -12,7 +12,7 @@ restService.use(bodyParser.json());
     const speechOutput = 'Welcome to the Pizz delvery update. ' +
         'Please tell me your order id,'+'my oder is';
     const repromptText = 'Please tell me your order id,'+'my oder is';
-    const shouldEndSession = false;
+
 
 }
 
@@ -32,11 +32,13 @@ function getPizza(intent){
 function onIntent(intentRequest) {
     console.log('Pizza world -- example');
     const intent = intentRequest.intent;
+    console.log('Pizza world'+intent);
     //const intentName = intentRequest.intent.name;
     // Dispatch to your skill's intent handlers
     if (intent =!null) {
         console.log('PizzIntent');
-        getPizza(intent);
+        getWelcomeResponse();
+        //getPizza(intent);
     }
 /*
     else if (intentName === 'AMAZON.HelpIntent') {

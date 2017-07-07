@@ -7,17 +7,7 @@ const bodyParser = require('body-parser');
 const restService = express();
 restService.use(bodyParser.json());
 
-const LANGUAGE_STRINGS = {
-    'en': {
-        'launchRequestResponse': 'Launch Request for dialog mode, the session will remain open until you say, exit',
-        'exit': 'Goodbye.',
-        'received_with': ' received with ',
-        'slot': ' slot. ',
-        'slots': ' slots. ',
-        'still_listening': "I'm still listening,  Please try another intent or say, stop",
-        'received_slots_are': 'Received slots are ',
-        'card_title': 'Reflected Intent'
-    }
+
 
 
 

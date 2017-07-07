@@ -56,8 +56,8 @@ function getWelcomeResponse(callback) {
 
 
 function getPizza(intent, session, callback){
-    let intentOderid = intent.slots.OderId.value;
-    console.log("hello intent testijfdsf"+intentOderid);
+    let intentOderid = intent.slots.value;
+    console.log("hello intent testijfdsf......"+intentOderid);
     const sessionAttributes = {};
     const cardTitle = 'Hello';
     const speechOutput = 'Welcome to pizz delvery status. ' +

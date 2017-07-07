@@ -2,9 +2,9 @@
   "name": "alexa-skill-1",
   "version": "1.0.0",
   "description": "Hello World Alexa",
-  "main": "index.js",
+  "main": "pizz.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node pizz.js"
   },
   "repository": {
     "type": "git",

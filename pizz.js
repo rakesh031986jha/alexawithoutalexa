@@ -46,7 +46,7 @@ function onIntent(intentRequest) {
 }
 
 
-app.post('/pizza', function(req, res) {
+restService.post('/pizza', function(req, res) {
 
     let event = req.body;
     if (req.body.request.type === 'LaunchRequest') {
@@ -59,4 +59,7 @@ app.post('/pizza', function(req, res) {
 
 
     res.send(result);
+});
+restService.listen((process.env.PORT || 5000), function () {
+    console.log("Server listening");
 });

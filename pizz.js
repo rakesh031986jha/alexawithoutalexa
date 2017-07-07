@@ -46,7 +46,7 @@ function getWelcomeResponse(callback) {
 
     const sessionAttributes = {};
     const cardTitle = 'Welcome';
-    const speechOutput = 'Welcome to dominoz pizza.';
+    const speechOutput = 'Welcome to dominoz pizz.';
     const repromptText = 'Welcome to dominoz pizz!';
     const shouldEndSession = false;
 
@@ -56,8 +56,8 @@ function getWelcomeResponse(callback) {
 
 
 function getPizza(intent, session, callback){
-    let intentOderid = intent.slots.value;
-    console.log("hello intent testijfdsf......"+intentOderid);
+    let intentOderid = intent.slots.OderId;
+    console.log("hello intent testijfdsf"+intentOderid);
     const sessionAttributes = {};
     const cardTitle = 'Hello';
     const speechOutput = 'Welcome to pizz delvery status. ' +
@@ -65,11 +65,11 @@ function getPizza(intent, session, callback){
     const repromptText = 'Please tell me oder id, ' +
         'my my oder id is ';
         if(intentOderid!=null){
-       let s = 'Welcome to pizz delvery status. ' +
+
         }
 
     const shouldEndSession = true;
-    
+
     callback(sessionAttributes,
         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 

@@ -7,69 +7,150 @@ const bodyParser = require('body-parser');
 const restService = express();
 restService.use(bodyParser.json());
 
-   function getWelcomeResponse() {
-        const cardTitle = 'Welcome';
-    const speechOutput = 'Welcome to the Pizz delvery update. ' +
-        'Please tell me your order id,'+'my oder is';
-    const repromptText = 'Please tell me your order id,'+'my oder is';
 
+// --------------- Helpers that build all of the responses -----------------------
+
+function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
+    return {
+        outputSpeech: {
+            type: 'PlainText',
+            text: output,
+        },
+        card: {
+            type: 'Simple',
+            title: `SessionSpeechlet - ${title}`,
+            content: `SessionSpeechlet - ${output}`,
+        },
+        reprompt: {
+            outputSpeech: {
+                type: 'PlainText',
+                text: repromptText,
+            },
+        },
+        shouldEndSession,
+    };
+}
+
+function buildResponse(sessionAttributes, speechletResponse) {
+    return {
+        version: '1.0',
+        sessionAttributes,
+        response: speechletResponse,
+    };
+}
+
+
+
+
+function getWelcomeResponse(callback) {
+
+    const sessionAttributes = {};
+    const cardTitle = 'Welcome';
+    const speechOutput = 'Welcome to pizz delvery status. ' +
+        'Please tell me oder id my oder id is ';
+    const repromptText = 'Please tell me oder id, ' +
+        'my my oder id is ';
+    const shouldEndSession = false;
+
+    callback(sessionAttributes,
+        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
+
+function getPizza(intent, session, callback){
+    const sessionAttributes = {};
+    const cardTitle = 'Hello';
+    const speechOutput = 'Welcome to dominoz pizz.';
+    const repromptText = 'Welcome to dominoz pizz!';
+    const shouldEndSession = true;
+
+    callback(sessionAttributes,
+        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 
 }
 
 
-function getPizza(intent){
-  var internsdd=intent;
-  console.log(internsdd);
-  //var OderId = intent.OderId;
-    const cardTitle = 'Pizza World';
-    const speechOutput = 'please tell me your order id.';
-    const repromptText = 'please tell me your order id!';
-    //if(OderId=== null){
-      //const ask = 'please tell me your order id.';
-    //}
-     if(internsdd=!null){
-       const your = 'your oder alredy Dispatch.';
-    }
-    }
+function handleSessionEndRequest(callback) {
+    const cardTitle = 'Session Ended';
+    const speechOutput = 'Thank you for trying the Alexa Skills Kit sample. Have a nice day!';
+    // Setting this to true ends the session and exits the skill.
+    const shouldEndSession = true;
 
-function onIntent(intentRequest) {
-    console.log('Pizza world -- example');
-    const intent = intentRequest;
-    //console.log(intentRequest.intent);
-    //const intentName = intentRequest.intent.name;
+    callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+}
+
+function onSessionStarted(sessionStartedRequest, session) {
+    console.log(`onSessionStarted requestId=${sessionStartedRequest.requestId}, sessionId=${session.sessionId}`);
+}
+
+function onLaunch(launchRequest, session, callback) {
+    console.log(`onLaunch requestId=${launchRequest.requestId}, sessionId=${session.sessionId}`);
+
+
+    getWelcomeResponse(callback);
+}
+
+function onIntent(intentRequest, session, callback) {
+    console.log(`onIntent requestId=${intentRequest.requestId}, sessionId=${session.sessionId}`);
+    console.log('Hello pizz -- example');
+    const intent = intentRequest.intent;
+    const intentName = intentRequest.intent.name;
+
     // Dispatch to your skill's intent handlers
-    //if (intent =!null) {
-        console.log('PizzIntent');
-              getPizza(intent);
-    //}
-/*
-    else if (intentName === 'AMAZON.HelpIntent') {
-        getWelcomeResponse();
+    if (intentName === 'PizzIntent') {
+        getPizza(intent, session, callback);
+    } else if (intentName === 'AMAZON.HelpIntent') {
+        getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
-        handleSessionEndRequest();
+        handleSessionEndRequest(callback);
     } else {
         throw new Error('Invalid intent');
-    }*/
+    }
 }
 
+/**
+ * Called when the user ends the session.
+ * Is not called when the skill returns shouldEndSession=true.
+ */
+function onSessionEnded(sessionEndedRequest, session) {
+    console.log(`onSessionEnded requestId=${sessionEndedRequest.requestId}, sessionId=${session.sessionId}`);
+    // Add cleanup logic here
+}
 
-restService.post('/pizza', function(req, res) {
+restService.post('/pizza', function (req, res) {
 
-//    let event = req.body;
-    //console.log(event);
-    if (req.body.request.type === 'LaunchRequest') {
-      getWelcomeResponse();
+    function callback(error, response){
+        res.json(response);
+        return true;
     }
-    else if (req.body.request.type === 'IntentRequest'){
-      let intentType= req.body.request.type;
-      console.log(intentType);
-    var result= onIntent(intentType);
-    console.log(result);
+    console.log(callback);
+
+    let event = req.body;
+    console.log(event);
+
+    if (event.session.new) {
+        onSessionStarted({ requestId: event.request.requestId }, event.session);
     }
 
+    if (event.request.type === 'LaunchRequest') {
+        onLaunch(event.request,
+            event.session,
+            (sessionAttributes, speechletResponse) => {
+                callback(null, buildResponse(sessionAttributes, speechletResponse));
+            });
+    } else if (event.request.type === 'IntentRequest') {
+        onIntent(event.request,
+            event.session,
+            (sessionAttributes, speechletResponse) => {
+                callback(null, buildResponse(sessionAttributes, speechletResponse));
+            });
+    } else if (event.request.type === 'SessionEndedRequest') {
+        onSessionEnded(event.request, event.session);
+        callback();
+    }
 
-  res.json(result);
 });
+
 restService.listen((process.env.PORT || 5000), function () {
     console.log("Server listening");
 });

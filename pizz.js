@@ -56,7 +56,7 @@ function getWelcomeResponse(callback) {
 
 
 function getPizza(intent, session, callback){
-    let intentOderid = intent.slots.type;
+    let intentOderid = intent.slots.OderId.value;
     console.log("hello intent testijfdsf"+intentOderid);
     const sessionAttributes = {};
     const cardTitle = 'Hello';
@@ -64,6 +64,9 @@ function getPizza(intent, session, callback){
         'Please tell me oder id my oder id is ';
     const repromptText = 'Please tell me oder id, ' +
         'my my oder id is ';
+        if(intentOderid!=null){
+
+        }
 
     const shouldEndSession = true;
 
@@ -75,8 +78,8 @@ function getPizza(intent, session, callback){
 
 function handleSessionEndRequest(callback) {
     const cardTitle = 'Session Ended';
-    const speechOutput = 'Thank you for trying the Alexa Skills Kit sample. Have a nice day!';
-    // Setting this to true ends the session and exits the skill.
+    const speechOutput = 'Thank you from dominoz pizza. Have a nice day!';
+    // Setting this to true ends the session a nd exits the skill.
     const shouldEndSession = true;
 
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));

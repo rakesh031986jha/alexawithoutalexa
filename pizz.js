@@ -56,7 +56,7 @@ function getWelcomeResponse(callback) {
 
 
 function getPizza(intent, session, callback){
-    let intentOderid = intent.slots.OderId;
+    let intentOderid = intent.slots.type;
     console.log("hello intent testijfdsf"+intentOderid);
     const sessionAttributes = {};
     const cardTitle = 'Hello';

@@ -37,8 +37,7 @@ function onIntent(intentRequest) {
     // Dispatch to your skill's intent handlers
     //if (intent =!null) {
         console.log('PizzIntent');
-        getWelcomeResponse();
-        //getPizza(intent);
+              getPizza(intent);
     //}
 /*
     else if (intentName === 'AMAZON.HelpIntent') {
@@ -54,11 +53,13 @@ function onIntent(intentRequest) {
 restService.post('/pizza', function(req, res) {
 
     let event = req.body;
+    console.log(event);
     if (req.body.request.type === 'LaunchRequest') {
       getWelcomeResponse();
     }
     else if (req.body.request.type === 'IntentRequest'){
-    var result= onIntent(event.request.type);
+      console.log(event);
+    var result= onIntent(req.body.request.type.intent);
     }
 
 

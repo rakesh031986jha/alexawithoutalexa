@@ -59,7 +59,7 @@ function getWelcomeResponse(callback) {
 
 function getPizza(intent, session, callback){
     let intentOderid = intent.slots;
-    console.log(intentOderid);
+    console.log("hello intent testijfdsf"+intentOderid);
     const sessionAttributes = {};
     const cardTitle = 'Hello';
     const speechOutput = 'Welcome to dominoz pizz.';

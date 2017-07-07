@@ -25,7 +25,7 @@ function getPizza(intent){
     //if(OderId=== null){
       //const ask = 'please tell me your order id.';
     //}
-    else if(intent=!null){
+     if(intent=!null){
        const your = 'your oder alredy Dispatch.';
     }
     }

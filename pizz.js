@@ -18,7 +18,7 @@ restService.use(bodyParser.json());
 
 
 function getPizza(intent){
-  var OderId = this.event.request.intent.slots.OderId;
+  var OderId = intent.slots.OderId;
     const cardTitle = 'Pizza World';
     const speechOutput = 'please tell me your order id.';
     const repromptText = 'please tell me your order id!';
@@ -52,7 +52,7 @@ function onIntent(intentRequest) {
 
 restService.post('/pizza', function(req, res) {
 
-    let event = req.body;
+//    let event = req.body;
     //console.log(event);
     if (req.body.request.type === 'LaunchRequest') {
       getWelcomeResponse();

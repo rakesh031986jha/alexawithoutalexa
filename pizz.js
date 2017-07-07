@@ -32,14 +32,14 @@ function getPizza(intent){
 function onIntent(intentRequest) {
     console.log('Pizza world -- example');
     const intent = intentRequest.intent;
-    console.log(intent);
+    console.log(intentRequest.inten);
     //const intentName = intentRequest.intent.name;
     // Dispatch to your skill's intent handlers
-    if (intent =!null) {
+    //if (intent =!null) {
         console.log('PizzIntent');
         getWelcomeResponse();
         //getPizza(intent);
-    }
+    //}
 /*
     else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse();

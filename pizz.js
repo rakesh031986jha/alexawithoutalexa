@@ -46,10 +46,8 @@ function getWelcomeResponse(callback) {
 
     const sessionAttributes = {};
     const cardTitle = 'Welcome';
-    const speechOutput = 'Welcome to pizz delvery status. ' +
-        'Please tell me oder id my oder id is ';
-    const repromptText = 'Please tell me oder id, ' +
-        'my my oder id is ';
+    const speechOutput = 'Welcome to dominoz pizz.';
+    const repromptText = 'Welcome to dominoz pizz!';
     const shouldEndSession = false;
 
     callback(sessionAttributes,
@@ -62,8 +60,11 @@ function getPizza(intent, session, callback){
     console.log("hello intent testijfdsf"+intentOderid);
     const sessionAttributes = {};
     const cardTitle = 'Hello';
-    const speechOutput = 'Welcome to dominoz pizz.';
-    const repromptText = 'Welcome to dominoz pizz!';
+    const speechOutput = 'Welcome to pizz delvery status. ' +
+        'Please tell me oder id my oder id is ';
+    const repromptText = 'Please tell me oder id, ' +
+        'my my oder id is ';
+
     const shouldEndSession = true;
 
     callback(sessionAttributes,

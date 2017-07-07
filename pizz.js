@@ -53,13 +53,13 @@ function onIntent(intentRequest) {
 restService.post('/pizza', function(req, res) {
 
     let event = req.body;
-    console.log(event);
+    //console.log(event);
     if (req.body.request.type === 'LaunchRequest') {
       getWelcomeResponse();
     }
     else if (req.body.request.type === 'IntentRequest'){
       console.log(event);
-    var result= onIntent(req.body.request.type.intent);
+    var result= onIntent(req.body.request.type);
     }
 
 

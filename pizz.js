@@ -18,7 +18,8 @@ restService.use(bodyParser.json());
 
 
 function getPizza(intent){
-  console.log(intent);
+  var internsdd=intent;
+  console.log(internsdd);
   //var OderId = intent.OderId;
     const cardTitle = 'Pizza World';
     const speechOutput = 'please tell me your order id.';
@@ -26,7 +27,7 @@ function getPizza(intent){
     //if(OderId=== null){
       //const ask = 'please tell me your order id.';
     //}
-     if(intent=!null){
+     if(internsdd=!null){
        const your = 'your oder alredy Dispatch.';
     }
     }

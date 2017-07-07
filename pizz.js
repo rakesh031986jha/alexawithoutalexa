@@ -30,9 +30,9 @@ function getPizza(intent){
     }
 
 function onIntent(intentRequest) {
-    console.log('Hello world -- example');
+    console.log('Pizza world -- example');
     const intent = intentRequest.intent;
-    const intentName = intentRequest.intent.name;
+    //const intentName = intentRequest.intent.name;
     // Dispatch to your skill's intent handlers
     if (intentName === 'PizzIntent') {
         getPizza(intent);

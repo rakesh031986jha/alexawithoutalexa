@@ -68,8 +68,7 @@ restService.post('/pizza', function(req, res) {
     }
 
 
-
-    res.send(result);
+  res.json(result);
 });
 restService.listen((process.env.PORT || 5000), function () {
     console.log("Server listening");

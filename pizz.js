@@ -73,8 +73,8 @@ function getPizza(intent, session, callback){
         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
       }
       else if(intentOderid!=null){
-        let speechOutput = 'your oder id already dispatch from '+intentOderid;
-        let repromptText = 'your oder id already dispatch from, ' + intentOderid;
+        let speechOutput = 'your oder id' +intentOderid + 'already dispatch from ';
+        let repromptText = 'your oder id' +intentOderid + 'already dispatch from, ' + intentOderid;
           callback(sessionAttributes,
               buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         }

@@ -64,11 +64,11 @@ function getPizza(intent, session, callback){
     const sessionAttributes = {};
     const cardTitle = 'Hello';
     const speechOutput = 'Welcome to pizz delvery status. ' +
-        'Please tell me oder id my oder id is ';
+        'Please tell me oder id';
     const repromptText = 'Please tell me oder id, ' +
         'my my oder id is ';
         if(intentOderid!=null){
-
+         console.log("Hello oder id show......."+intentOderid);
         }
 
     const shouldEndSession = true;

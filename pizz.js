@@ -63,19 +63,21 @@ function getPizza(intent, session, callback){
     console.log("hello intent testijfdsf"+intentOderid);
     const sessionAttributes = {};
     const cardTitle = 'Hello';
-    const speechOutput = 'Welcome to pizz delvery status. ' +
-        'Please tell me oder id';
-    const repromptText = 'Please tell me oder id, ' +
-        'my my oder id is ';
-        if(intentOderid!=null){
-         console.log("Hello oder id show......."+intentOderid);
-        }
-
     const shouldEndSession = true;
-
-    callback(sessionAttributes,
+     if(intentOderid==null){
+       let speechOutput = 'Welcome to pizz delvery status. ' +
+           'Please tell me oder id';
+       let repromptText = 'Please tell me oder id, ' +
+           'my my oder id is ';
+        callback(sessionAttributes,
         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
-
+      }
+      else if(intentOderid!=null){
+        let speechOutput = 'your oder id already dispatch from '+intentOderid;
+        let repromptText = 'your oder id already dispatch from, ' + intentOderid;
+          callback(sessionAttributes,
+              buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        }
 }
 
 

@@ -44,7 +44,7 @@ function buildResponse(sessionAttributes, speechletResponse) {
 function getFlight(intent, session,  callback){
   console.log(intent);
   const flightStatus = intent.slots.status.value;
-  const Booking = intent.slots.booking;
+  const Booking = intent.slots.booking.value;
   console.log("Booking"+Booking);
   const destiination = intent.slots.city.name;
   const from = intent.slots.fromCity.name;

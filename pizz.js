@@ -43,12 +43,12 @@ function buildResponse(sessionAttributes, speechletResponse) {
 }
 function getFlight(intent, session,  callback){
   console.log(intent);
-  const flightStatus = intent.slots.status.value;
-  const Booking = intent.slots.booking.value;
+  let flightStatus = intent.slots.status.value;
+  let Booking = intent.slots.booking.value;
   console.log("Booking"+Booking);
-  const destiination = intent.slots.city.name;
-  const from = intent.slots.fromCity.name;
-  const date = intent.slots.date.name;
+  let destiination = intent.slots.city.name;
+  let from = intent.slots.fromCity.name;
+  let date = intent.slots.date.name;
   console.log("status"+flightStatus);
 
   console.log("destiination"+destiination);

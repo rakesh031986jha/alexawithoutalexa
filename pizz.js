@@ -160,7 +160,7 @@ function onIntent(intentRequest, session, callback) {
         handleSessionEndRequest(callback);
     }
     else if (intentName === 'flight') {
-        handleSessionEndRequest(callback);
+        getFlight(callback);
     }
     else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);

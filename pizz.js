@@ -64,7 +64,7 @@ function getFlight(intent, session,  callback){
          'flight number is ';
       callback(sessionAttributes,
       buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
-    }else if(flightStatus==null && Booking!=null){
+    }else if(flightStatus==null && Booking!=null && flightStatus==null){
       let speechOutput = 'welcome to United Kingdom Airlines. ' +
           'please tell me from to destination';
       let repromptText = 'please tell me from to destination' +
@@ -72,13 +72,13 @@ function getFlight(intent, session,  callback){
        callback(sessionAttributes,
        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
-    else if(destiination!=null && from!=null){
+    else if(destiination!=null && from!=null && flightStatus==null){
       let speechOutput = 'please tell me date of jurney';
       let repromptText = 'please tell me date of jurney';
        callback(sessionAttributes,
        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
-    else if(destiination!=null && from!=null && Booking !=null){
+    else if(destiination!=null && from!=null && Booking !=null && flightStatus==null){
       let speechOutput = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date ;
       let repromptText = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date ;
        callback(sessionAttributes,

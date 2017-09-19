@@ -41,7 +41,49 @@ function buildResponse(sessionAttributes, speechletResponse) {
         response: speechletResponse,
     };
 }
-
+function getFlight(intent, session,  callback){
+  const flightStatus = intent.slots.status.value;
+  const Booking = intent.slots.booking.value;
+  const destiination = intent.slots.city.value;
+  const from = intent.slots.fromCity.value;
+  const date = intent.slots.date.value;
+  const sessionAttributes = {};
+  const cardTitle = 'Hello';
+  const shouldEndSession = true;
+   if(flightStatus==null && Booking==null ){
+     let speechOutput = 'welcome to United Kingdom Airlines. ' +
+         'please tell me flight number';
+     let repromptText = 'please tell me flight number,' +
+         'flight number is ';
+      callback(sessionAttributes,
+      buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+    }else if(flightStatus==null && Booking!=null){
+      let speechOutput = 'welcome to United Kingdom Airlines. ' +
+          'please tell me from to destination';
+      let repromptText = 'please tell me from to destination' +
+          'from to destination';
+       callback(sessionAttributes,
+       buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+    }
+    else if(destiination!=null && from!=null){
+      let speechOutput = 'please tell me date of jurney';
+      let repromptText = 'please tell me date of jurney';
+       callback(sessionAttributes,
+       buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+    }
+    else if(destiination!=null && from!=null && Booking !=null){
+      let speechOutput = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date+ ;
+      let repromptText = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date+ ;
+       callback(sessionAttributes,
+       buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+    }
+      else if(flightStatus!=null){
+      let speechOutput = 'your flight number ' + flightStatus + 'on time';
+      let repromptText = 'your flight number ' + flightStatus + 'on time';
+        callback(sessionAttributes,
+            buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+      }
+}
 
 
 
@@ -110,6 +152,9 @@ function onIntent(intentRequest, session, callback) {
         getPizza(intent, session, callback);
     }
     else if (intentName === 'ThanksIntent') {
+        handleSessionEndRequest(callback);
+    }
+    else if (intentName === 'flight') {
         handleSessionEndRequest(callback);
     }
     else if (intentName === 'AMAZON.HelpIntent') {

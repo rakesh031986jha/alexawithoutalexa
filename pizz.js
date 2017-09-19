@@ -44,27 +44,24 @@ function buildResponse(sessionAttributes, speechletResponse) {
 function getFlight(intent, session,  callback){
   console.log(intent);
   let flightStatus = intent.slots.status.value;
-  let Booking = intent.slots.booking;
-  console.log("Booking"+Booking);
   let destiination = intent.slots.city;
   let from = intent.slots.fromCity;
   let date = intent.slots.date;
   console.log("status"+flightStatus);
-
   console.log("destiination"+destiination);
   console.log("from"+from);
   console.log("date"+date);
   const sessionAttributes = {};
   const cardTitle = 'Hello';
   const shouldEndSession = true;
-   if(flightStatus==null && Booking==null ){
+   if(flightStatus===null){
      let speechOutput = 'welcome to United Kingdom Airlines. ' +
          'please tell me flight number';
      let repromptText = 'please tell me flight number,' +
          'flight number is ';
       callback(sessionAttributes,
       buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
-    }else if(flightStatus==null && Booking!=null && flightStatus==null){
+    }else if(flightStatus===null && destiination!=null){
       let speechOutput = 'welcome to United Kingdom Airlines. ' +
           'please tell me from to destination';
       let repromptText = 'please tell me from to destination' +
@@ -72,13 +69,13 @@ function getFlight(intent, session,  callback){
        callback(sessionAttributes,
        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
-    else if(destiination!=null && from!=null && flightStatus==null){
+    else if(destiination!=null && from!=null && flightStatus===null){
       let speechOutput = 'please tell me date of jurney';
       let repromptText = 'please tell me date of jurney';
        callback(sessionAttributes,
        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
-    else if(destiination!=null && from!=null && Booking !=null && flightStatus==null){
+    else if(destiination!=null && from!=null && flightStatus===null){
       let speechOutput = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date ;
       let repromptText = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date ;
        callback(sessionAttributes,

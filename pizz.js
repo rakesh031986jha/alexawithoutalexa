@@ -47,6 +47,11 @@ function getFlight(intent, session,  callback){
   const destiination = intent.slots.city.value;
   const from = intent.slots.fromCity.value;
   const date = intent.slots.date.value;
+  console.log("status"+flightStatus);
+  console.log("Booking"+Booking);
+  console.log("destiination"+destiination);
+  console.log("from"+from);
+  console.log("date"+date);
   const sessionAttributes = {};
   const cardTitle = 'Hello';
   const shouldEndSession = true;
@@ -146,7 +151,7 @@ function onLaunch(launchRequest, session, callback) {
 function onIntent(intentRequest, session, callback) {
     const intent = intentRequest.intent;
     const intentName = intentRequest.intent.name;
-
+    console.log("requestname"+intentName);
     // Dispatch to your skill's intent handlers
     if (intentName === 'PizzIntent') {
         getPizza(intent, session, callback);

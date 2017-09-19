@@ -75,7 +75,7 @@ function getFlight(intent, session,  callback){
        callback(sessionAttributes,
        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
-    else if(destiination!=null && from!=null && flightStatus===null){
+    else if(destiination!=null && from!=null && flightStatus===null && date!=null){
       let speechOutput = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date ;
       let repromptText = 'your flight ticket book from ' +from+ to +destiination+ 'on Date' +date ;
        callback(sessionAttributes,

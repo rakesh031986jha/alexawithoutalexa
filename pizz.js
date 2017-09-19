@@ -48,7 +48,7 @@ function getFlight(intent, session,  callback){
   console.log("Booking"+Booking);
   let destiination = intent.slots.city.value;
   let from = intent.slots.fromCity.value;
-  let date = intent.slots.date.value;
+  let date = intent.slots.date;
   console.log("status"+flightStatus);
 
   console.log("destiination"+destiination);

@@ -65,16 +65,16 @@ function getPizza(intent, session, callback){
     const cardTitle = 'Hello';
     const shouldEndSession = true;
      if(intentOderid==null){
-       let speechOutput = 'Welcome to pizz delvery status. ' +
-           'Please tell me oder id';
-       let repromptText = 'Please tell me oder id, ' +
-           'my my oder id is ';
+       let speechOutput = 'welcome to pizza delivery status. ' +
+           'please tell me your order id';
+       let repromptText = 'please tell me your order id, ' +
+           'my oder id is ';
         callback(sessionAttributes,
         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
       }
       else if(intentOderid!=null){
-        let speechOutput = 'your oder id' +intentOderid + 'already dispatch from ';
-        let repromptText = 'your oder id' +intentOderid + 'already dispatch from, ' + intentOderid;
+        let speechOutput = 'your oder id' + intentOderid + 'already dispatch  ';
+        let repromptText = 'your oder id' + intentOderid + 'already dispatch  , ' + intentOderid;
           callback(sessionAttributes,
               buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
         }

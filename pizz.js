@@ -108,7 +108,11 @@ function onIntent(intentRequest, session, callback) {
     // Dispatch to your skill's intent handlers
     if (intentName === 'PizzIntent') {
         getPizza(intent, session, callback);
-    } else if (intentName === 'AMAZON.HelpIntent') {
+    }
+    else if (intentName === 'ThanksIntent') {
+        handleSessionEndRequest(callback);
+    }
+    else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         handleSessionEndRequest(callback);

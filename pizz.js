@@ -49,8 +49,8 @@ function getWelcomeResponse(callback) {
 
     const sessionAttributes = {};
     const cardTitle = 'Welcome';
-    const speechOutput = 'Welcome to dominoz pizz.';
-    const repromptText = 'Welcome to dominoz pizz!';
+    const speechOutput = 'Welcome to dominoz pizza.';
+    const repromptText = 'Welcome to dominoz pizza!';
     const shouldEndSession = false;
 
     callback(sessionAttributes,

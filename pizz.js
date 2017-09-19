@@ -42,6 +42,7 @@ function buildResponse(sessionAttributes, speechletResponse) {
     };
 }
 function getFlight(intent, session,  callback){
+  console.log(intent);
   const flightStatus = intent.slots.status.value;
   const Booking = intent.slots.booking.value;
   const destiination = intent.slots.city.value;
@@ -83,8 +84,8 @@ function getFlight(intent, session,  callback){
        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
     }
       else if(flightStatus!=null){
-      let speechOutput = 'your flight number ' + flightStatus + 'on time';
-      let repromptText = 'your flight number ' + flightStatus + 'on time';
+      let speechOutput = 'your flight number ' + flightStatus + ' on time';
+      let repromptText = 'your flight number ' + flightStatus + ' on time';
         callback(sessionAttributes,
             buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
       }

@@ -155,10 +155,10 @@ function onIntent(intentRequest, session, callback) {
     const intentName = intentRequest.intent.name;
     console.log("requestname"+intentName);
     // Dispatch to your skill's intent handlers
-    if (intentName === 'PizzIntent') {
-        getPizza(intent, session, callback);
-    }
-    else if (intentName === 'ThanksIntent') {
+  //  if (intentName === 'PizzIntent') {
+    //    getPizza(intent, session, callback);
+    //}
+    if (intentName === 'ThanksIntent') {
         handleSessionEndRequest(callback);
     }
     else if (intentName === 'flightIntent') {
